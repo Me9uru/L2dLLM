@@ -1,0 +1,23 @@
+# L2dLLM Configuration
+
+# Provider: "openai" or "anthropic"
+provider: openai
+
+# API credentials (or set via L2DLLM_API_KEY / OPENAI_API_KEY / ANTHROPIC_API_KEY env var)
+api_key: "your-api-key-here"
+
+# Base URL (for OpenAI-compatible APIs like DeepSeek, Ollama, vLLM)
+# Leave empty for official OpenAI/Anthropic endpoints
+base_url: ""
+
+# Model name
+# OpenAI: gpt-4o, gpt-4o-mini, deepseek-chat, etc.
+# Anthropic: claude-sonnet-4-20250514, claude-3-haiku-20240307, etc.
+model: gpt-4o
+
+# System prompt
+system_prompt: "You are a helpful assistant."
+
+# Generation parameters
+max_tokens: 4096
+temperature: 0.7
