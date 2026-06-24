@@ -15,9 +15,27 @@ base_url: ""
 # Anthropic: claude-sonnet-4-20250514, claude-3-haiku-20240307, etc.
 model: gpt-4o
 
-# System prompt
+# System prompt — used by the 'default' model when no persona is active.
 system_prompt: "You are a helpful assistant."
+
+# Persona library. Each .md in personas_dir is exposed as its own model id in
+# /v1/models, so clients (Open WebUI, LobeChat) can switch character by
+# switching model. `persona` here, or --persona on the CLI, additionally
+# promotes that persona's body to be the 'default' model's prompt.
+personas_dir: ""
+persona: ""
 
 # Generation parameters
 max_tokens: 4096
 temperature: 0.7
+
+# HTTP server
+host: "127.0.0.1"
+port: 8000
+
+# TTS (mimo-tts service)
+tts_api_key: ""  # or set via MIMO_API_KEY env var
+tts_base_url: "https://api.xiaomimimo.com/v1"
+tts_model: "mimo-v2.5-tts"  # preset voices; use "mimo-v2.5-tts-voicedesign" for voice design
+tts_sample_rate: 24000
+tts_default_voice: "mimo_default"  # Options: mimo_default, 冰糖, 茉莉, 苏打, 白桦, Mia, Chloe, Milo, Dean

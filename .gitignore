@@ -55,3 +55,8 @@ config.yaml
 
 # Jupyter
 .ipynb_checkpoints/
+
+# Web frontend (web/)
+web/node_modules/
+web/dist/
+web/.vite/

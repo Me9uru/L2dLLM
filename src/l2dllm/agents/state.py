@@ -13,4 +13,7 @@ class AgentState(MessagesState):
     list and deduplicates by message ID.
     """
 
-    pass
+    tts_enabled: bool = False
+    tts_voice: str = "mimo_default"
+    tts_voice_instructions: str | None = None
+    tts_audio: str | None = None

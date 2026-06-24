@@ -21,7 +21,18 @@ class Settings(BaseModel):
     max_tokens: int = 4096
     temperature: float = 0.7
     skills_dir: str = ""
+    personas_dir: str = ""
+    persona: str = ""
     max_iterations: int = 10
+    host: str = "127.0.0.1"
+    port: int = 8000
+
+    # TTS (mimo-tts)
+    tts_api_key: str = ""
+    tts_base_url: str = "https://api.xiaomimimo.com/v1"
+    tts_model: str = "mimo-v2.5-tts"
+    tts_sample_rate: int = 24000
+    tts_default_voice: str = "mimo_default"
 
 
 _CONFIG_SEARCH_PATHS = [
@@ -77,5 +88,11 @@ def _load_from_file(path: Path) -> Settings:
             env_key = env_key or os.environ.get("OPENAI_API_KEY")
         if env_key:
             data["api_key"] = env_key
+
+    # Allow env var override for tts_api_key
+    if not data.get("tts_api_key"):
+        env_tts_key = os.environ.get("MIMO_API_KEY") or os.environ.get("TTS_API_KEY")
+        if env_tts_key:
+            data["tts_api_key"] = env_tts_key
 
     return Settings(**data)
